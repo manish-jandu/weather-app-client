@@ -58,6 +58,10 @@ document.body.addEventListener('click',ev=>{
         return;
     }
 
+    localStorage.setItem("lat",lat);
+    localStorage.setItem("lon",lon);
+    localStorage.setItem("name",name);
+
     showWeather(lat,lon,name);
 });
 
@@ -71,3 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('weather').style.display = 'none';
     });
   });
+
+  document.body.onload = ()=>{
+    const lat = localStorage.getItem("lat");
+    const lon = localStorage.getItem("lon");
+    const  name = localStorage.getItem("name");
+    if( lat && lon && name){
+        showWeather(lat,lon,name);
+    }
+  }
